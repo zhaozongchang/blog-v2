@@ -19,8 +19,6 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
       <ul class="nav navbar-nav header-font" >
-        <li><a href="/">网站首页</a></li>
-        <li><%= link_to("个人成长", upward_posts_path(:order=> "by_developer")) %></li>
         <li><%= link_to("百宝箱", skill_posts_path(:order=> "by_developer")) %></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">技术博客<span class="caret"></span></a>
@@ -59,7 +57,9 @@
                   <b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu">
+                  <% if current_user.admin? %>
                   <li> <%= link_to(" 管理博客", admin_posts_path, class: "fa fa-credit-card-alt" )%> </li>
+                  <% end %>
                   <li class="divider"></li>
                   <li>
                     <%= link_to(" 我的收藏", favorites_path, class: "fa fa-heart" ) %>
